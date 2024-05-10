@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTO Sponsor</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1>PTO Sponsors</h1>
+
+        <!-- Form for adding new rows -->
+        <form id="dataForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="business">Business:</label>
+                <input type="text" class="form-control" id="business" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Row</button>
+        </form>
+
+        <!-- Table to display data -->
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Business</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="dataTable">
+                <!-- Table body will be populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // adding rows to the table
+        document.getElementById('dataForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get input values
+            var name = document.getElementById('name').value;
+            var business = document.getElementById('business').value; 
+            var email = document.getElementById('email').value;
+
+            // Create a new row
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${name}</td>
+                <td>${business}</td>
+                <td>${email}</td>    `;
+
+            // Append the new row to the table body
+            document.getElementById('dataTable').appendChild(newRow);
+
+            // Clear the form inputs
+            document.getElementById('name').value = '';
+            document.getElementById('business').value = '';
+            document.getElementById('email').value = '';
+
+        });
+    </script>
+
+</body>
+
+</html>
